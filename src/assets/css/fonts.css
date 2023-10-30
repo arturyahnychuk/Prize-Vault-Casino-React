@@ -1,0 +1,34 @@
+@font-face {
+  font-family: "jomhuria";
+  src: url("../fonts/jomhuria/Jomhuria-Regular.ttf");
+}
+
+@font-face {
+  font-family: "moul";
+  src: url("../fonts/moul/Moul-Regular.ttf");
+}
+
+@font-face {
+  font-family: "angkor";
+  src: url("../fonts/angkor/Angkor-Regular.ttf");
+}
+
+@font-face {
+  font-family: "gurajada";
+  src: url("../fonts/gurajada/Gurajada-Regular.ttf");
+}
+
+@font-face {
+  font-family: "amikoBold";
+  src: url("../fonts/amiko/Amiko-Bold.ttf");
+}
+
+@font-face {
+  font-family: "amikoRegular";
+  src: url("../fonts/amiko/Amiko-Regular.ttf");
+}
+
+@font-face {
+  font-family: "robotoRegular";
+  src: url("../fonts/roboto/Roboto-Regular.ttf");
+}

@@ -1,0 +1,44 @@
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input {
+  font-family: theme('fontFamily.amikoRegular');
+}
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+.container {
+  width: 100%;
+  max-width: 393px;
+  min-height: 100vh;
+  max-height: max-content;
+  padding: 0px 21px;
+  margin: 0 auto;
+}
+.linear-main {
+  background: theme("backgroundImage.mainLinear");
+  box-shadow: theme("boxShadow.main");
+}
+.leading-normal {
+  line-height: normal;
+}
+.text-shadow {
+  text-shadow: -1px 1px 1px theme("colors.black");
+}
+.text-stroke-orange {
+  -webkit-text-stroke: 1px theme('colors.orange');
+}
+.text-stroke2-orange {
+  -webkit-text-stroke: 2px theme('colors.orange');
+}
+.text-stroke-gray {
+  -webkit-text-stroke: 1px rgb(54, 55, 56);
+}
+
+.wheel {
+  transition: transform 3s ease-out;
+}
