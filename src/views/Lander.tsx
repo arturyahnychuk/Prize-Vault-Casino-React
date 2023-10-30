@@ -1,3 +1,6 @@
+// Components
+import SpinnerWheel from "@/components/wheel/SpinnerWheel"
+
 const Lander = () => {
   return (
     <>
@@ -12,7 +15,7 @@ const Lander = () => {
           your chance to win big!
         </p>
       </div>
-      {/* <SpinerWheel/> */}
+      <SpinnerWheel/>
     </>
   )
 }
