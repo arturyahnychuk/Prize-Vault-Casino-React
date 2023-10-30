@@ -1,7 +1,10 @@
 import { createBrowserRouter } from "react-router-dom"
+
+// Pages
 import LanderPage from "@/views/Lander"
 import InfoPage from "@/views/Info"
 import CheckoutPage from "@/views/Checkout"
+import WinnerPage from "@/views/Winner"
 
 const router = createBrowserRouter([
   {
@@ -15,6 +18,10 @@ const router = createBrowserRouter([
   {
     path: "/checkout",
     element: <CheckoutPage />
+  },
+  {
+    path: "/winner",
+    element: <WinnerPage />
   }
 ])
 
