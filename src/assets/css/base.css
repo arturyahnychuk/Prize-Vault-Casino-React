@@ -42,3 +42,9 @@ input[type=number] {
 .wheel {
   transition: transform 3s ease-out;
 }
+
+.btn:active {
+  box-shadow: 0px 0px 0px 22px #8dff7f30;
+  transition: all 0.3s ease;
+}
+

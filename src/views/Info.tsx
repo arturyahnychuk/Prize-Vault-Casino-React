@@ -1,10 +1,9 @@
 import { useState, ChangeEvent } from "react";
-
-import WinnerTitle from "@/components/ui/winnerTitle"
-
-import FormLayout from "@/components/layout/FormLayout"
-import Input from "@/components/ui/Input"
-import Btn from "@/components/ui/Btn"
+// Components
+import FormLayout from "@/components/layouts/formLayout";
+import Input from "@/components/ui/Input";
+import Btn from "@/components/ui/Btn";
+import WinnerTitle from "@/components/ui/winnerTitle";
 
 interface FormData {
   first_name: string;
@@ -37,13 +36,13 @@ const InfoPage = () => {
     }));
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = ()=> {
     alert("Form Submit")
   }
-
   return (
     <>
       <WinnerTitle />
+
       <FormLayout onSubmit={handleSubmit} formTitle="Shipping Information">
         <div className="w-full grid grid-cols-2 gap-[27px]">
           <Input
@@ -109,7 +108,7 @@ const InfoPage = () => {
         <Btn className="absolute bottom-[-38px] left-[50%] translate-x-[-50%]" label="CONFIRM"/>
       </FormLayout>
     </>
-  )
+  );
 }
 
-export default InfoPage;
+export default InfoPage

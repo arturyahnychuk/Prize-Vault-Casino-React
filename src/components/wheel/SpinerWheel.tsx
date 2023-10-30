@@ -153,8 +153,11 @@ const SpinerWheel = () => {
       setSpinning(false);
       setBlur("blur(0px)");
     }, 3000);
+    // check css style in base.css
+    // .wheel {
+    //     transition: transform 3s ease-out;
+    //  }
   };
-  
   const getRandomInt = (min: number, max: number) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   };
@@ -224,3 +227,42 @@ const SpinerWheel = () => {
 };
 
 export default SpinerWheel;
+
+{
+  /* <img
+src={WheelGift1}
+className="w-[15vw] max-w-[60px] absolute top-[15%] left-[50.5%] translate-x-[-50%]"
+/>
+<div className="absolute top-[25%]  right-[19%]">
+<p className="font-angkor text-md text-white rotate-[46.91deg] text-shadow">
+  +1 Spin
+</p>
+</div>
+<img
+src={WheelGift3}
+className="w-[15vw] max-w-[40px] absolute top-[50%] right-[15%] translate-y-[-50%]"
+/>
+<div className="absolute bottom-[26%] right-[20%]">
+<p className="font-angkor text-md text-white rotate-[136deg] text-shadow">
+  +1 Spin
+</p>
+</div>
+<img
+src={WheelGift5}
+className="w-[15vw] max-w-[40px] absolute left-[50%] bottom-[15%] translate-x-[-50%]"
+/>
+<div className="absolute bottom-[24%] left-[23%]">
+<p className="font-angkor text-center leading-[22px] text-md text-white rotate-[-135deg] text-shadow">
+  You <br /> Lose!
+</p>
+</div>
+<img
+src={WheelGift7}
+className="w-[15vw] max-w-[60px] absolute top-[50%] left-[11%] rotate-[-13deg] translate-y-[-50%]"
+/>
+<div className="absolute left-[23%] top-[24%]">
+<p className="font-angkor text-center leading-[22px] text-md text-white rotate-[-45deg] text-shadow">
+  You <br /> Lose!
+</p>
+</div> */
+}

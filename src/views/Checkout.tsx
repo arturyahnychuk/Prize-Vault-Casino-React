@@ -1,6 +1,6 @@
 import { useState, ChangeEvent } from "react";
 // Components
-import FormLayout from "@/components/layout/FormLayout";
+import FormLayout from "@/components/layouts/formLayout";
 import Input from "@/components/ui/Input";
 import Btn from "@/components/ui/Btn";
 import WinnerTitle from "@/components/ui/winnerTitle";

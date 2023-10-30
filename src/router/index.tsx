@@ -1,15 +1,13 @@
-import { createBrowserRouter } from "react-router-dom"
-
+import { createBrowserRouter } from "react-router-dom";
 // Pages
-import LanderPage from "@/views/Lander"
-import InfoPage from "@/views/Info"
-import CheckoutPage from "@/views/Checkout"
-import WinnerPage from "@/views/Winner"
-
+import LanderPage from "@/views/Lander";
+import InfoPage from "@/views/Info";
+import CheckoutPage from "@/views/Checkout";
+import Winner from "@/views/winner";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <LanderPage />
+    element: <LanderPage />,
   },
   {
     path: "/info",
@@ -21,8 +19,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/winner",
-    element: <WinnerPage />
+    element: <Winner />
   }
-])
-
+]);
 export default router;

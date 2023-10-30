@@ -1,7 +1,7 @@
 // Components
-import SpinnerWheel from "@/components/wheel/SpinnerWheel"
+import SpinerWheel from "@/components/wheel/SpinerWheel"
 
-const Lander = () => {
+export default function LanderPage() {
   return (
     <>
       <div className="my-[19px]">
@@ -15,9 +15,7 @@ const Lander = () => {
           your chance to win big!
         </p>
       </div>
-      <SpinnerWheel/>
+      <SpinerWheel/>
     </>
-  )
+  );
 }
-
-export default Lander;

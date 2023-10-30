@@ -5,7 +5,6 @@ const WinnerTitle = () => {
         winner!
       </h2>
     </div>
-  )
-}
-
-export default WinnerTitle
+  );
+};
+export default WinnerTitle;

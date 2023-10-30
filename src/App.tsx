@@ -1,34 +1,27 @@
-import { useState, useEffect } from 'react'
-import { RouterProvider } from 'react-router-dom'
-import Header from "@/components/common/Header"
-import PageLayout from "@/components/layout/PageLayout"
-import Loader from '@/components/loader/Loader'
-import router from "@/router"
-import '@/index.css'
+// Main Router
+import { RouterProvider } from "react-router-dom";
+import router from "@/router";
+// main css
+import "@/index.css";
+// Components
+import PageLayout from "@/components/layouts/pageLayout";
+import Header from "@/components/common/Header";
 
-const App = () => {
+import { useEffect, useState } from "react";
+import Loader from "./components/loader/Loader";
 
-  const [isLoading, setIsLoading] = useState(true)
-
-  useEffect(() => {
-    window.onload = () => {
-      setIsLoading(false)
-    }
-
-    return () => {
-      window.onload = null
-    }
-  }, [])
-
+function App() {
+  const [isLoading, setIsLoading] = useState(true);
+  window.addEventListener('load', ()=> {
+    setIsLoading(false)
+  })
   return (
-    <>
-      <PageLayout>
-        { isLoading && (<Loader />)}
-        <Header />
-        <RouterProvider router={router} />
-      </PageLayout>      
-    </>
-  )
+    <PageLayout>
+        {isLoading && (<Loader />)}
+      <Header />
+      <RouterProvider router={router} />
+    </PageLayout>
+  );
 }
 
-export default App
+export default App;
