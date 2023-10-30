@@ -1,7 +1,7 @@
 import { useState } from "react";
 // Components
 import Btn from "../ui/Btn";
-
+// Images
 import SpinnerWheelImage from "@/assets/images/wheel.svg";
 import ArrowImage from "@/assets/images/arrow.svg";
 // Gift Images
@@ -80,7 +80,59 @@ const SpinerWheel = () => {
       classNames: "absolute left-[17%] top-[22%]",
     },
   ]);
-  
+  const [spins, setSpins] = useState<number>(12);
+  const [spinning, setSpinning] = useState<boolean>(false);
+  const [rotation, setRotation] = useState<number>(0);
+  const [blur, setBlur] = useState<string>("blur(0px)");
+
+  const handleSpin = () => {
+    if (spins === 0) {
+      alert("Oops, no more spins!");
+      return;
+    }
+    let currentSpins: number = spins;
+    if (spinning) {
+      return; // Prevent starting a new spin while the wheel is already spinning
+    }
+    currentSpins--;
+    setSpins(currentSpins);
+    setSpinning(true);
+    setBlur("blur(20px)");
+
+    const spinInterval =
+      getRandomInt(0, giftsArr.length) * (360 / giftsArr.length) +
+      getRandomInt(3, 4) * 360;
+
+    const newRotation = rotation + spinInterval;
+    console.log("rotation: ", rotation);
+    console.log("spinInerval: ", spinInterval);
+
+    setRotation(newRotation);
+
+    setTimeout(() => {
+      setBlur("blur(0px)");
+    }, 1800);
+
+    setTimeout(() => {
+      setSpinning(false);
+      // Calculate the winning gift based on the rotation angle
+      const normalizedRotation: number = ((newRotation % 360) + 360) % 360; // Ensure positive rotation angle
+      const sectorSize: number = 360 / giftsArr.length;
+      const reverseDeg: number = Math.floor(360 - normalizedRotation);
+      if(reverseDeg === 360) {
+        const winningGift: GiftsArr = giftsArr[0];
+        alert(winningGift.name)
+        return
+      }
+      const winningIndex: number = Math.floor(reverseDeg / sectorSize);
+      const winningGift: GiftsArr = giftsArr[winningIndex];
+      alert(winningGift.name)
+    }, 3000);
+  };
+
+  const getRandomInt = (min: number, max: number) => {    
+    return Math.floor(Math.random() * (max - min + 1)) + min;    
+  };
 
   return (
     <>
@@ -90,7 +142,7 @@ const SpinerWheel = () => {
         </p>
         <div className="flex items-center justify-center w-[55px] h-[30px] rounded-[3px] bg-white border-2 mb-1 border-darkBorder">
           <p className="font-gurajada text-5xl text-yellow text-stroke-orange leading-[45px] tracking-[-2.25px] mb-1 ">
-            2
+            {spins}
           </p>
         </div>
       </div>
@@ -103,7 +155,11 @@ const SpinerWheel = () => {
           />
 
           <div
-            className="w-full rounded-full wheel"            
+            className="w-full rounded-full wheel"
+            style={{
+              transform: `rotate(${rotation}deg)`,
+              filter: blur,
+            }}
           >
             <img
               src={SpinnerWheelImage}
@@ -136,11 +192,10 @@ const SpinerWheel = () => {
         </div>
       </div>
       <div className="pb-10 mx-auto w-max">
-        <Btn label="PLAY" />
+        <Btn onClick={handleSpin} label="PLAY" />
       </div>
     </>
   );
 };
 
 export default SpinerWheel;
-
