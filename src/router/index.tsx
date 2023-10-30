@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom"
 import LanderPage from "@/views/Lander"
 import InfoPage from "@/views/Info"
+import CheckoutPage from "@/views/Checkout"
 
 const router = createBrowserRouter([
   {
@@ -10,6 +11,10 @@ const router = createBrowserRouter([
   {
     path: "/info",
     element: <InfoPage />
+  },
+  {
+    path: "/checkout",
+    element: <CheckoutPage />
   }
 ])
 

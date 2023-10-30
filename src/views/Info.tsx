@@ -17,7 +17,7 @@ interface FormData {
   phone: string;
 }
 
-const Info = () => {
+const InfoPage = () => {
   const [formData, setFormData] = useState<FormData>({
     first_name: "",
     last_name: "",
@@ -106,10 +106,10 @@ const Info = () => {
           onChange={handleInputChange}
         />
         <div className="w-full h-[25px] opacity-0 invisible"></div>
-        <Btn className="absolute bottom-[-38px] left-[50%] translate-x-[-50%]" label="CONFIRM"/>        
+        <Btn className="absolute bottom-[-38px] left-[50%] translate-x-[-50%]" label="CONFIRM"/>
       </FormLayout>
     </>
   )
 }
 
-export default Info;
+export default InfoPage;
