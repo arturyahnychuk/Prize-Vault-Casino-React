@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 // Components
 import Btn from "../ui/Btn";
 // Images
@@ -9,6 +9,7 @@ import WheelGift1 from "@/assets/images/wheelGift1.svg";
 import WheelGift3 from "@/assets/images/wheelGift3.svg";
 import WheelGift5 from "@/assets/images/wheelGift5.svg";
 import WheelGift7 from "@/assets/images/wheelGift7.svg";
+import { redirect, useLocation, useNavigate } from "react-router-dom";
 
 interface GiftsArr {
   name: string;
@@ -18,6 +19,7 @@ interface GiftsArr {
   rotate: number | null;
 }
 const SpinerWheel = () => {
+
   const [giftsArr] = useState<GiftsArr[]>([
     {
       name: "gift-1",
@@ -80,7 +82,9 @@ const SpinerWheel = () => {
       classNames: "absolute left-[17%] top-[22%]",
     },
   ]);
-  const [spins, setSpins] = useState(3);
+  const navigate = useNavigate()
+  const [spins, setSpins] = useState<number>(2);
+  const [getAdditionalSpin, setGetAdditionalSpin] = useState<boolean>(false)
   const [spinning, setSpinning] = useState<boolean>(false);
   const [rotation, setRotation] = useState<number>(0);
   const [blur, setBlur] = useState<string>("blur(0px)");
@@ -98,16 +102,20 @@ const SpinerWheel = () => {
 
     setSpinning(true);
     setBlur("blur(50px)");
-    if (spins === 3) {
+
+    if (spins === 2 && !getAdditionalSpin) {
       setRotation(360 * 4 - 45);
       setTimeout(() => {
         setBlur("blur(0px)");
       }, 1800);
       setTimeout(() => {
         setSpinning(false);
+        setGetAdditionalSpin(true)
+        currentSpins++
+        setSpins(currentSpins)
       }, 3000);
       return;
-    } else if (spins === 2) {
+    } else if (spins === 2 && getAdditionalSpin) {
       setRotation(rotation + (360 * 4 + 90));
       setTimeout(() => {
         setBlur("blur(0px)");
@@ -117,42 +125,54 @@ const SpinerWheel = () => {
       }, 3000);
       return;
     } else {
-      console.log(rotation);
+      setRotation(rotation + (360 * 4 - 45));
+      setTimeout(() => {
+        setBlur("blur(0px)");
+      }, 1800);
+      setTimeout(() => {
+        setSpinning(false);
+        
+      }, 3000);
+      setTimeout(()=>{
+        navigate('/winner')
+        //  window.location.href = "/winner";
+
+      },3500)
     }
-    const spinInterval =
-      getRandomInt(0, giftsArr.length) * (360 / giftsArr.length) +
-      getRandomInt(3, 4) * 360;
+    // const spinInterval =
+    //   getRandomInt(0, giftsArr.length) * (360 / giftsArr.length) +
+    //   getRandomInt(3, 4) * 360;
 
-    const newRotation = rotation + spinInterval;
+    // const newRotation = rotation + spinInterval;
 
-    setRotation(newRotation);
+    // setRotation(newRotation);
 
-    setTimeout(() => {
-      // Calculate the winning gift based on the rotation angle
-      const normalizedRotation: number = ((newRotation % 360) + 360) % 360; // Ensure positive rotation angle
-      const sectorSize: number = 360 / giftsArr.length;
-      const reverseDeg: number = Math.floor(360 - normalizedRotation);
-      if (reverseDeg === 360) {
-        const winningGift: GiftsArr = giftsArr[0];
-        return;
-      }
-      const winningIndex: number = Math.floor(reverseDeg / sectorSize);
-      if (
-        winningIndex === 1 ||
-        winningIndex === 3 ||
-        winningIndex === 5 ||
-        winningIndex === 7
-      ) {
-        // alert('asd')
-        setRotation(newRotation + 45);
-      }
-      const winningGift: GiftsArr = giftsArr[winningIndex];
-      // alert(winningGift.name)
-    }, 1800);
-    setTimeout(() => {
-      setSpinning(false);
-      setBlur("blur(0px)");
-    }, 3000);
+    // setTimeout(() => {
+    //   // Calculate the winning gift based on the rotation angle
+    //   const normalizedRotation: number = ((newRotation % 360) + 360) % 360; // Ensure positive rotation angle
+    //   const sectorSize: number = 360 / giftsArr.length;
+    //   const reverseDeg: number = Math.floor(360 - normalizedRotation);
+    //   if (reverseDeg === 360) {
+    //     const winningGift: GiftsArr = giftsArr[0];
+    //     return;
+    //   }
+    //   const winningIndex: number = Math.floor(reverseDeg / sectorSize);
+    //   if (
+    //     winningIndex === 1 ||
+    //     winningIndex === 3 ||
+    //     winningIndex === 5 ||
+    //     winningIndex === 7
+    //   ) {
+    //     // alert('asd')
+    //     setRotation(newRotation + 45);
+    //   }
+    //   const winningGift: GiftsArr = giftsArr[winningIndex];
+    //   // alert(winningGift.name)
+    // }, 1800);
+    // setTimeout(() => {
+    //   setSpinning(false);
+    //   setBlur("blur(0px)");
+    // }, 3000);
     // check css style in base.css
     // .wheel {
     //     transition: transform 3s ease-out;
@@ -174,7 +194,7 @@ const SpinerWheel = () => {
           </p>
         </div>
       </div>
-      <div className="my-[30px] w-full w-[371px] bg-yellow rounded-full shadow-orange-md">
+      <div className="wheel-main my-[30px] w-full w-[371px] bg-yellow rounded-full shadow-orange-md">
         <div className="relative w-full">
           <img
             src={ArrowImage}

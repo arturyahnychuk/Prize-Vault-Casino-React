@@ -5,7 +5,7 @@ import Input from "@/components/ui/Input";
 import Btn from "@/components/ui/Btn";
 import WinnerTitle from "@/components/ui/winnerTitle";
 // images
-import masterCardImage from "@/assets/images/mastercard.svg";
+import masterCardImage from "@/assets/images/mastercard.png";
 import checkoutImage from "@/assets/images/checkout.png";
 
 interface FormData {
