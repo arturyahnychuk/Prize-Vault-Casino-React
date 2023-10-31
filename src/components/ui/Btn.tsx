@@ -1,6 +1,6 @@
 // Button.tsx
 
-import { ButtonHTMLAttributes, useEffect, useState } from "react";
+import { ButtonHTMLAttributes } from "react";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   label: string;
@@ -16,7 +16,7 @@ const Btn = ({
 }: ButtonProps) => {
 
   return (
-    <div className=" pulsate">
+    <div className="pulsate">
       <button 
       className={`${className} btn w-full max-w-[276px] w-max pt-6 pb-3 flex items-center justify-center px-[38px] bg-successLinear rounded-[18px] shadow-sm shadow-black active:scale-[1.1] select-none transition-all`}
       {...props}
@@ -30,4 +30,5 @@ const Btn = ({
     </div>
   );
 };
+
 export default Btn;

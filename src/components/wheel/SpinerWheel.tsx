@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 // Components
 import Btn from "../ui/Btn";
 // Images
@@ -9,7 +9,7 @@ import WheelGift1 from "@/assets/images/wheelGift1.svg";
 import WheelGift3 from "@/assets/images/wheelGift3.svg";
 import WheelGift5 from "@/assets/images/wheelGift5.svg";
 import WheelGift7 from "@/assets/images/wheelGift7.svg";
-import { redirect, useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 interface GiftsArr {
   name: string;
@@ -82,21 +82,27 @@ const SpinerWheel = () => {
       classNames: "absolute left-[17%] top-[22%]",
     },
   ]);
+  
   const navigate = useNavigate()
+
   const [spins, setSpins] = useState<number>(2);
   const [getAdditionalSpin, setGetAdditionalSpin] = useState<boolean>(false)
   const [spinning, setSpinning] = useState<boolean>(false);
   const [rotation, setRotation] = useState<number>(0);
   const [blur, setBlur] = useState<string>("blur(0px)");
+
   const handleSpin = () => {
     if (spins === 0) {
       alert("Oops, no more spins!");
       return;
     }
+
     let currentSpins: number = spins;
+
     if (spinning) {
       return; // Prevent starting a new spin while the wheel is already spinning
     }
+
     currentSpins--;
     setSpins(currentSpins);
 
@@ -135,53 +141,10 @@ const SpinerWheel = () => {
       }, 3000);
       setTimeout(()=>{
         navigate('/winner')
-        //  window.location.href = "/winner";
-
       },3500)
     }
-    // const spinInterval =
-    //   getRandomInt(0, giftsArr.length) * (360 / giftsArr.length) +
-    //   getRandomInt(3, 4) * 360;
-
-    // const newRotation = rotation + spinInterval;
-
-    // setRotation(newRotation);
-
-    // setTimeout(() => {
-    //   // Calculate the winning gift based on the rotation angle
-    //   const normalizedRotation: number = ((newRotation % 360) + 360) % 360; // Ensure positive rotation angle
-    //   const sectorSize: number = 360 / giftsArr.length;
-    //   const reverseDeg: number = Math.floor(360 - normalizedRotation);
-    //   if (reverseDeg === 360) {
-    //     const winningGift: GiftsArr = giftsArr[0];
-    //     return;
-    //   }
-    //   const winningIndex: number = Math.floor(reverseDeg / sectorSize);
-    //   if (
-    //     winningIndex === 1 ||
-    //     winningIndex === 3 ||
-    //     winningIndex === 5 ||
-    //     winningIndex === 7
-    //   ) {
-    //     // alert('asd')
-    //     setRotation(newRotation + 45);
-    //   }
-    //   const winningGift: GiftsArr = giftsArr[winningIndex];
-    //   // alert(winningGift.name)
-    // }, 1800);
-    // setTimeout(() => {
-    //   setSpinning(false);
-    //   setBlur("blur(0px)");
-    // }, 3000);
-    // check css style in base.css
-    // .wheel {
-    //     transition: transform 3s ease-out;
-    //  }
   };
-  const getRandomInt = (min: number, max: number) => {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  };
-
+  
   return (
     <>
       <div className="flex items-center justify-center gap-2">
@@ -248,41 +211,3 @@ const SpinerWheel = () => {
 
 export default SpinerWheel;
 
-{
-  /* <img
-src={WheelGift1}
-className="w-[15vw] max-w-[60px] absolute top-[15%] left-[50.5%] translate-x-[-50%]"
-/>
-<div className="absolute top-[25%]  right-[19%]">
-<p className="font-angkor text-md text-white rotate-[46.91deg] text-shadow">
-  +1 Spin
-</p>
-</div>
-<img
-src={WheelGift3}
-className="w-[15vw] max-w-[40px] absolute top-[50%] right-[15%] translate-y-[-50%]"
-/>
-<div className="absolute bottom-[26%] right-[20%]">
-<p className="font-angkor text-md text-white rotate-[136deg] text-shadow">
-  +1 Spin
-</p>
-</div>
-<img
-src={WheelGift5}
-className="w-[15vw] max-w-[40px] absolute left-[50%] bottom-[15%] translate-x-[-50%]"
-/>
-<div className="absolute bottom-[24%] left-[23%]">
-<p className="font-angkor text-center leading-[22px] text-md text-white rotate-[-135deg] text-shadow">
-  You <br /> Lose!
-</p>
-</div>
-<img
-src={WheelGift7}
-className="w-[15vw] max-w-[60px] absolute top-[50%] left-[11%] rotate-[-13deg] translate-y-[-50%]"
-/>
-<div className="absolute left-[23%] top-[24%]">
-<p className="font-angkor text-center leading-[22px] text-md text-white rotate-[-45deg] text-shadow">
-  You <br /> Lose!
-</p>
-</div> */
-}

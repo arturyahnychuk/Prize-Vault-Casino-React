@@ -5,11 +5,13 @@ interface FormLayoutProps {
   formTitle: string,
   onSubmit: () => void;
 }
+
 const FormLayout = ({children, formTitle, onSubmit}: FormLayoutProps) => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>)=> {
     e.preventDefault()
     onSubmit()
   }
+  
   return (
     <div className="relative w-full bg-white rounded-[11px] border border-blue p-5">
       <div className="w-full pb-3 border-b-[0.25px] border-b-gray-400 mb-[27px]">

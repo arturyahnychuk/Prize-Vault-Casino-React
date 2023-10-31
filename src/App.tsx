@@ -1,13 +1,12 @@
+import { useState, useLayoutEffect } from "react";
 // Main Router
-import { RouterProvider, useNavigate } from "react-router-dom";
+import { RouterProvider } from "react-router-dom";
 import router from "@/router";
 // main css
 import "@/index.css";
 // Components
 import PageLayout from "@/components/layouts/pageLayout";
 import Header from "@/components/common/Header";
-
-import { useEffect, useState, useLayoutEffect } from "react";
 import Loader from "./components/loader/Loader";
 
 function App() {
@@ -25,7 +24,6 @@ function App() {
       setIsLoading(false);
     };
   }, []);
-
 
   return (
     <PageLayout>

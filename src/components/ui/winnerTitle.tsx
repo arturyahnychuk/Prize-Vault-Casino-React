@@ -7,4 +7,5 @@ const WinnerTitle = () => {
     </div>
   );
 };
+
 export default WinnerTitle;
